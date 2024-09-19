@@ -2,10 +2,14 @@
 
 html {
   font-size: 62.5%;
+  width: 100%;
+  height: 100%;
 }
 
 body {
   margin: 0;
+  width: 100%;
+  height: 100%;
 }
 
 a,p {
@@ -28,6 +32,7 @@ a,p {
 
 
 .ladoA {
+
   height: 70%;
   width: 50%;
 
@@ -135,7 +140,7 @@ input:hover{
 
 .inputSenha button img {
   filter: invert(50%) brightness(100%);
-  height: 50%;
+
 }
 
 .container2 {
@@ -176,7 +181,8 @@ input:hover{
 }
 
 .ladoB {
-  height: 100%;
+
+  height: auto;
   width: 50%;
   background-color: rgb(0, 0, 0);
   display: flex;
@@ -198,4 +204,14 @@ input:hover{
   font-size: 0.9rem;
   text-align: left;
   margin-bottom: 1.3rem;
+}
+
+@media (max-width: 710px) {
+  .ladoB {
+    display: none;
+  }
+
+  .ladoA {
+    width: 100%; 
+  }
 }
