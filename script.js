@@ -19,7 +19,7 @@ btnOlhinho.addEventListener('click', (e) => {
   if (tipo === 'password') {
     inputSenha.setAttribute('type', 'text');
     imgOlhinho.src = '/assets/img/olhoaberto.svg';
-  } else{
+  } else {
     inputSenha.setAttribute('type', 'password');
     imgOlhinho.src = '/assets/img/olhofechado.svg';
   }
@@ -30,8 +30,8 @@ class validaForm {
     this.form = document.querySelector('#idFormulario');
     this.eventos();
   }
-  eventos(){
-    this.form.addEventListener('submit',e => {
+  eventos() {
+    this.form.addEventListener('submit', e => {
       this.handleSubmit(e);
     });
   };
@@ -39,7 +39,8 @@ class validaForm {
   handleSubmit(e) {
     e.preventDefault();
     const camposValidos = this.validaCampos();
-    if(camposValidos){
+    console.log(camposValidos);
+    if (camposValidos) {
       alert('Deu certo,bem vindo a sua conta!');
     }
 
@@ -52,31 +53,34 @@ class validaForm {
     let divSenha = this.form.querySelector('#idDivSenha');
     let idF = this.form.querySelector('#idF');
 
-    for (let erros of this.form.querySelectorAll('.erroText')){
+    for (let erros of this.form.querySelectorAll('.erroText')) {
       erros.remove();
     }
 
-      if (!email.value){
-        this.criaErro(email, `Campo email não pode estar em branco`);
-        valida = false;
-      }
-      if (!senha.value){
-        this.criaErro(divSenha, `Campo senha não pode estar em branco`);
-        valida = false;
-      }
-      if (senha.value != 'admin' && email.value != 'admin@admin.com'){
-        this.criaErro(idF, `Login ou senha inválidos  S e E`);
-      }else if (email.value != 'admin@admin.com'){
-        this.criaErro(idF, `Login ou senha inválidos  E`);
-      }else if (senha.value != 'admin'){
-        this.criaErro(idF, `Login ou senha inválidos  S`);
-      }
+    if (!email.value) {
+      this.criaErro(email, `Campo email não pode estar em branco`);
+      valida = false;
+    }
+    if (!senha.value) {
+      this.criaErro(divSenha, `Campo senha não pode estar em branco`);
+      valida = false;
+    }
+    if (senha.value != 'admin' && email.value != 'admin@admin.com') {
+      this.criaErro(idF, `Login ou senha inválidos  S e E`);
+      valida = false;
+    } else if (email.value != 'admin@admin.com') {
+      this.criaErro(idF, `Login ou senha inválidos  E`);
+      valida = false;
+    } else if (senha.value != 'admin') {
+      this.criaErro(idF, `Login ou senha inválidos  S`);
+      valida = false;
+    }
 
 
     return valida;
   }
 
-  criaErro(input, msg){
+  criaErro(input, msg) {
     const div = document.createElement('div');
     div.innerHTML = msg;
     div.classList.add('erroText');
